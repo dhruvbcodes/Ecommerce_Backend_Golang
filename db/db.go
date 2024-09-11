@@ -3,11 +3,11 @@ package db
 import (
 	"database/sql"
 	"log"
-	"github.com/go-sql-driver/mysql"
+	_ "github.com/godror/godror"
 )
 
-func NewMySQLStorage(cfg mysql.Config) (*sql.DB, error) {
-	db, err := sql.Open("mysql", cfg.FormatDSN())
+func NewOracleStorage(dsn string) (*sql.DB, error) {
+	db, err := sql.Open("godror", dsn)
 	if err != nil {
 		log.Fatal(err)
 	}
